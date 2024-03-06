@@ -22,7 +22,7 @@ API'leri test etmek için aşağıdaki endpoint'lere HTTP istekleri gönderebili
 
 - `events-api`:
   - `GET /events-api/welcome`: Hoşgeldiniz mesajını döner.
-  - `GET /events-api/events`: Etkinlik listesini döner.
+  - `GET /events-api/events?page=1&limit=10`: Etkinlik listesini döner.
 
  
 Postman koleksiyonunu postman dizini altında paylaştım import yapıp kullanılabilir.
