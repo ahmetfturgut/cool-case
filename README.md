@@ -33,10 +33,10 @@ Postman koleksiyonunu postman dizini altında paylaştım import yapıp kullanı
 `auth-api` ve `events-api` servislerindeki testleri çalıştırmak için aşağıdaki komutları kullanabilirsiniz:
 
 ```bash
-# auth-api için testleri çalıştırmak
+# auth-api testlerini çalıştırmak için
 cd auth-api && npm run test
 
-# events-api için testleri çalıştırmak
+# events-api testlerini çalıştırmak için
 cd events-api && npm run test
 
   
