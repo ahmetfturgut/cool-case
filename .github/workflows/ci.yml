@@ -1,0 +1,45 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-app: [auth-api, events-api]
+        include:
+          - node-app: auth-api
+            port: 3000
+          - node-app: events-api
+            port: 3001
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies for ${{ matrix.node-app }}
+      run: npm install
+      working-directory: ./${{ matrix.node-app }}
+
+    - name: Run unit tests for ${{ matrix.node-app }}
+      run: npm test
+      working-directory: ./${{ matrix.node-app }}
+
+    - name: Build Docker images with Docker Compose
+      run: docker-compose -f docker-compose.yml build
+
+    - name: Start Docker containers with Docker Compose
+      run: docker-compose -f docker-compose.yml up -d
+
+    - name: Check running containers
+      run: docker ps

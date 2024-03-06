@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  auth-api:
+    build:
+      context: ./auth-api
+      dockerfile: .dockerfile
+    environment:
+      - JWT_SECRET_KEY=sacret_key
+    ports:
+      - '3000:3000'
+    networks:
+      - app-network
+
+  events-api:
+    build:
+      context: ./events-api
+      dockerfile: .dockerfile
+    environment:
+      - JWT_SECRET_KEY=sacret_key
+    ports:
+      - '3001:3001'
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - auth-api
+      - events-api
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

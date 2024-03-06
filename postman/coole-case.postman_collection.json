@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "ca82ffcd-0522-4a5c-ab6e-07b27e79b67a",
+		"name": "coole-case",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost/events-api/events/getEvents?page=1&limit=10",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost/events-api/events/getEvents?page=1&limit=10",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"events-api",
+						"events",
+						"getEvents"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost/auth-api/user/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"test@example.com\",\n    \"password\":\"correctpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost/auth-api/user/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"auth-api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost/events-api/events/welcome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost/events-api/events/welcome",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"events-api",
+						"events",
+						"welcome"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
